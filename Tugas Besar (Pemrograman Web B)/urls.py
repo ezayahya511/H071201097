@@ -1,10 +1,8 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-from blog_posts import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.post_list, name='post_list'),
-    url(r'^new$', views.post_create, name='post_new'),
-    url(r'^edit/(?P\d+)$', views.post_update, name='post_edit'),
-    url(r'^delete/(?P\d+)$', views.post_delete, name='post_delete'),]
+    url(r'^blog_posts/', include(('blog_posts.urls','blog_posts'),namespace = 'blog_posts')),
+
+]
